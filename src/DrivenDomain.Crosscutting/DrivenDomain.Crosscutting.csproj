@@ -4,14 +4,11 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>Driven-Domain.Crosscutting</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Challenge.Crosscutting\Challenge.Crosscutting.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="FluentValidation" Version="11.8.0" />
+      <ProjectReference Include="..\DrivenDomain.Infrastructure\DrivenDomain.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@ using Challenge.Application.Dtos;
 using Challenge.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Challenge.Api.Controllers;
+namespace DrivenDomain.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

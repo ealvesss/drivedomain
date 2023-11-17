@@ -1,16 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.Api", "src\Challenge.Api\Challenge.Api.csproj", "{E63FDD77-E306-46C2-A289-C3B887E9736F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrivenDomain.Api", "src\DrivenDomain.Api\DrivenDomain.Api.csproj", "{E63FDD77-E306-46C2-A289-C3B887E9736F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.Application", "src\Challenge.Application\Challenge.Application.csproj", "{05DCA6ED-D796-4228-BCDB-DE178B74B4D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrivenDomain.Application", "src\DrivenDomain.Application\DrivenDomain.Application.csproj", "{05DCA6ED-D796-4228-BCDB-DE178B74B4D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.Domain", "src\Challenge.Domain\Challenge.Domain.csproj", "{FEEB5539-0E99-4F30-B71A-C95705F4B24D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrivenDomain.Domain", "src\DrivenDomain.Domain\DrivenDomain.Domain.csproj", "{FEEB5539-0E99-4F30-B71A-C95705F4B24D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.Infrastructure", "src\Challenge.Infrastructure\Challenge.Infrastructure.csproj", "{779355BB-7A90-4FD6-B60A-0B78CC5733B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrivenDomain.Infrastructure", "src\DrivenDomain.Infrastructure\DrivenDomain.Infrastructure.csproj", "{779355BB-7A90-4FD6-B60A-0B78CC5733B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.Crosscutting", "src\Challenge.Crosscutting\Challenge.Crosscutting.csproj", "{A0CC0BF6-25C6-483B-B36E-B9E83F066C21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrivenDomain.Crosscutting", "src\DrivenDomain.Crosscutting\DrivenDomain.Crosscutting.csproj", "{A0CC0BF6-25C6-483B-B36E-B9E83F066C21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.Tests", "src\Challenge.Tests\Challenge.Tests.csproj", "{967DA890-EEFE-422C-83EE-C784F0CB3C73}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrivenDomain.Tests", "src\DrivenDomain.Tests\DrivenDomain.Tests.csproj", "{967DA890-EEFE-422C-83EE-C784F0CB3C73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

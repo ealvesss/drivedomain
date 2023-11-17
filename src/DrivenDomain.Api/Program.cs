@@ -1,20 +1,17 @@
-using Microsoft.AspNetCore.Components;
 using Microsoft.OpenApi.Models;
 using Challenge.Api.Extensions;
-using Challenge.Application.Dtos.FluentValidators;
-using FluentValidation;
-using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Challenge API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "DDD API", Version = "v1" });
 });
 
 //extensions methods
@@ -33,7 +30,7 @@ if (!app.Environment.IsDevelopment())
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "DDD API V1");
     c.RoutePrefix = string.Empty;
 });
 
