@@ -1,7 +1,11 @@
+
+<p align="center">
+  <img src="https://cdn2.iconfinder.com/data/icons/microservices-soft-fill/60/Domain-Driven-Design-domain-driven-design-512.png" width=256px height=256px />
+</p>
+
 # Drive Domain Design
 
-
-### Short Resume 📃
+### Short Resume 🗒️
 
 The Domain-Driven Design (DDD) pattern is an approach to software development that focuses on modeling software to closely reflect complex business domains. It's not just a set of technical practices, but a way of thinking and a set of priorities aimed at accelerating software projects that deal with complex domains.
 
