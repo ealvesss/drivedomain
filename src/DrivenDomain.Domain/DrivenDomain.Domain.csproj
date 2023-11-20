@@ -8,11 +8,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DrivenDomain.Application\DrivenDomain.Application.csproj" />
+      <Folder Include="Entities\" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Entities\" />
+      <PackageReference Include="FluentValidation" Version="11.8.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DrivenDomain.Crosscutting\DrivenDomain.Crosscutting.csproj" />
     </ItemGroup>
 
 </Project>

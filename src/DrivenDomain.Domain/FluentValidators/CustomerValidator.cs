@@ -1,9 +1,9 @@
-using Challenge.Domain.Entities;
+using DrivenDomain.Domain;
 using FluentValidation;
 
-namespace Challenge.Domain.FluentValidators;
+namespace DriveDomain.Domain.FluentValidators;
 
-public class CustomerValidator : AbstractValidator<Customer>
+public class CustomerValidator : AbstractValidator<CustomerDomainService>
 {
     public CustomerValidator()
     {

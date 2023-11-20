@@ -1,7 +1,8 @@
-using Challenge.Application.Dtos.FluentValidators;
+using DrivenDomain.Application.Dtos.FluentValidators;
 using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Challenge.Api.Extensions;
+namespace DrivenDomain.Api.Extensions;
 
 public static class FluentValidationExtension
 {

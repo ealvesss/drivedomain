@@ -1,12 +1,15 @@
-using Challenge.Application;
-using Challenge.Application.Interfaces;
+using DriveDomain.Application;
+using DriveDomain.Domain.Interfaces;
+using DrivenDomain.Application.Interfaces;
+using DrivenDomain.Domain;
 
-namespace Challenge.Api.Extensions;
+namespace DrivenDomain.Api.Extensions;
 
 public static class DiExtension
 {
     public static void Inject(this IServiceCollection services)
     {
-        services.AddTransient<ICustomerApplication, CustomerApplication>();
+        services.AddTransient<ICustomerAppService, CustomerAppService>();
+        services.AddTransient<ICustomerDomainService, CustomerDomainService>();
     }
 }

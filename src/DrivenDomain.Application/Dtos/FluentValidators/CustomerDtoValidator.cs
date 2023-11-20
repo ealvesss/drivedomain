@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Challenge.Application.Dtos.FluentValidators;
+namespace DrivenDomain.Application.Dtos.FluentValidators;
 
 public class CustomerDtoValidator : AbstractValidator<CustomerDto>
 {

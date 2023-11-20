@@ -1,5 +1,5 @@
-using Challenge.Application.Dtos;
-using Challenge.Application.Interfaces;
+using DrivenDomain.Application.Dtos;
+using DrivenDomain.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DrivenDomain.Api.Controllers;
@@ -8,8 +8,8 @@ namespace DrivenDomain.Api.Controllers;
 [Route("api/[controller]")]
 public class CustomerController : ControllerBase
 {
-    private readonly ICustomerApplication _customerApp;
-    public CustomerController(ICustomerApplication customerApp)
+    private readonly ICustomerAppService _customerApp;
+    public CustomerController(ICustomerAppService customerApp)
     {
         _customerApp = customerApp;
     }
@@ -18,9 +18,10 @@ public class CustomerController : ControllerBase
     public async Task<IActionResult> Post([FromBody] CustomerDto dto)
     {
         var result = await _customerApp.CreateAsync(dto);
-        //if(!result.IsSuccess)
-        if(!result.IsValid)
-            return BadRequest(result);
+        
+        //if(!result.IsValid)
+        if(!result.IsSuccess)
+            return BadRequest("Invalid data");
         
         return Ok(result);
     }

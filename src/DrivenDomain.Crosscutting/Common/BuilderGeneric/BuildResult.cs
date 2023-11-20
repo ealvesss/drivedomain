@@ -1,9 +1,9 @@
-namespace Challenge.Crosscutting.Common.BuilderGeneric;
+namespace DrivenDomain.Crosscutting.Common.BuilderGeneric;
 
 public class BuildResult<T>
 {
-    public T Object { get; private set; }
-    public List<string> Errors { get; private set; } = new List<string>();
+    public T Object { get; private set; } = default!;
+    public List<string> Errors { get; private set; } = new();
     public bool IsSuccess => Errors.Count == 0;
 
     public void SetObject(T obj)

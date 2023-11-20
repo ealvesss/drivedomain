@@ -15,6 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DrivenDomain.Application\DrivenDomain.Application.csproj" />
+      <ProjectReference Include="..\DrivenDomain.Domain\DrivenDomain.Domain.csproj" />
     </ItemGroup>
 
 </Project>

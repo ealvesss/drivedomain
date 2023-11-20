@@ -1,4 +1,4 @@
-namespace Challenge.Domain.Entities;
+namespace DrivenDomain.Domain.Entities;
 
 public class BaseEntity
 {

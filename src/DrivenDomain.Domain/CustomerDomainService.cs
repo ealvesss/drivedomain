@@ -1,11 +1,11 @@
-using Challenge.Domain.Entities;
-using Challenge.Domain.FluentValidators;
-using Challenge.Domain.Interfaces;
+using DriveDomain.Domain.FluentValidators;
+using DriveDomain.Domain.Interfaces;
+using DrivenDomain.Domain.Entities;
 using FluentValidation.Results;
 
-namespace Challenge.Domain;
+namespace DrivenDomain.Domain;
 
-public class Customer : BaseEntity, ICustomerDomain
+public class CustomerDomainService : BaseEntity, ICustomerDomainService
 {
     public String Name { get; }
     public String Email { get; }
@@ -13,7 +13,7 @@ public class Customer : BaseEntity, ICustomerDomain
     public String Type { get; }
     
     
-    public async Task<ValidationResult> CreateAsync(Customer entity)
+    public async Task<ValidationResult> CreateAsync(CustomerDomainService entity)
     {
         var entityResult = await new CustomerValidator().ValidateAsync(entity);
 

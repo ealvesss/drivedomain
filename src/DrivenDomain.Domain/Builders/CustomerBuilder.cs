@@ -1,10 +1,8 @@
-using Challenge.Application.Dtos.Builders;
-using Challenge.Crosscutting.Common.BuilderGeneric;
-using Challenge.Domain.Entities;
+using DrivenDomain.Crosscutting.Common.BuilderGeneric;
 
-namespace Challenge.Domain.Builders;
+namespace DrivenDomain.Domain.Builders;
 
-public class CustomerBuilder : BuilderBase<CustomerBuilder, Customer>
+public class CustomerBuilder : BuilderBase<CustomerBuilder, CustomerDomainService>
 {
     
 }
