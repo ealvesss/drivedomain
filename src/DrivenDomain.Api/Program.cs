@@ -1,8 +1,8 @@
 using DrivenDomain.Crosscutting.Extensions;
-using Microsoft.OpenApi.Models;
 using DrivenDomain.Infrastructure.Context;
 using DrivenDomain.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "DDD API", Version = "v1" });
-});
+builder.Services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "DDD API", Version = "v1" }); });
 
 //dependency injection
 builder.Services.Inject();
