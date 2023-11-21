@@ -1,4 +1,4 @@
-namespace Challenge.Tests;
+namespace DrivenDomain.Tests;
 
 public class UnitTest1
 {

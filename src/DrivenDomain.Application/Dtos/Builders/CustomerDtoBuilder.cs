@@ -4,19 +4,19 @@
 //is correctly formatted, complete, and makes sense in a general context.
 //
 
-using Challenge.Crosscutting.Common.BuilderGeneric;
+using DrivenDomain.Crosscutting.Common.BuilderGeneric;
 
-namespace Challenge.Application.Dtos.Builders;
+namespace DrivenDomain.Application.Dtos.Builders;
 
 public class CustomerDtoBuilder : BuilderBase<CustomerDtoBuilder, CustomerDto>
 {
     BuildResult<CustomerDto> result = new();
 
-    public CustomerDtoBuilder WithId(Guid id)
-    {
-        _instance.Id = id;
-        return this;
-    }
+    // public CustomerDtoBuilder WithId(Guid id)
+    // {
+    //     _instance.Id = id;
+    //     return this;
+    // }
 
     public CustomerDtoBuilder WithName(String? name)
     {

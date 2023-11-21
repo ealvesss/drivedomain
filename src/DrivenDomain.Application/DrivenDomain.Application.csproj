@@ -8,11 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DrivenDomain.Crosscutting\DrivenDomain.Crosscutting.csproj" />
+      <PackageReference Include="FluentValidation" Version="11.8.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentValidation" Version="11.8.0" />
+      <ProjectReference Include="..\DrivenDomain.Domain\DrivenDomain.Domain.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 using System.Dynamic;
 
-namespace Challenge.Application.Dtos;
+namespace DrivenDomain.Application.Dtos;
 
 public class BaseDto
 {

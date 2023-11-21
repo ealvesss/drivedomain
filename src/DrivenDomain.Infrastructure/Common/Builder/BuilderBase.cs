@@ -1,4 +1,4 @@
-namespace Challenge.Crosscutting.Common.BuilderGeneric;
+namespace DrivenDomain.Crosscutting.Common.BuilderGeneric;
 
 //Builder Inheritance Approach
 public abstract class BuilderBase<TBuilder, TEntity> where TBuilder 
