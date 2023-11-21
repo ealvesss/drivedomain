@@ -1,11 +1,9 @@
-using System.ComponentModel.DataAnnotations;
 using DrivenDomain.Domain;
-using DrivenDomain.Domain.Entities;
-using ValidationResult = FluentValidation.Results.ValidationResult;
+using FluentValidation.Results;
 
-namespace DriveDomain.Domain.Interfaces;
+namespace DriveDomain.Application.Interfaces.Domain;
 
 public interface ICustomerDomainService
 {
-    Task<ValidationResult> CreateAsync(CustomerDomainService customerDomainService);
+    Task<ValidationResult> Create(Customer customer);
 }

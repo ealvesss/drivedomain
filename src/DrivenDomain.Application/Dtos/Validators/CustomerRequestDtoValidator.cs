@@ -1,8 +1,9 @@
+using DrivenDomain.Application.Dtos.Request;
 using FluentValidation;
 
 namespace DrivenDomain.Application.Dtos.FluentValidators;
 
-public class CustomerDtoValidator : AbstractValidator<CustomerDto>
+public class CustomerDtoValidator : AbstractValidator<CustomerRequestDto>
 {
     public CustomerDtoValidator()
     {

@@ -1,4 +1,5 @@
 using DrivenDomain.Application.Dtos;
+using DrivenDomain.Application.Dtos.Request;
 using DrivenDomain.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,12 +16,12 @@ public class CustomerController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] CustomerDto dto)
+    public async Task<IActionResult> Post([FromBody] CustomerCreateRequestDto customerCreateRequestDto)
     {
-        var result = await _customerApp.CreateAsync(dto);
+        var result = await _customerApp.CreateAsync(customerCreateRequestDto);
         
-        //if(!result.IsValid)
-        if(!result.IsSuccess)
+        // if(!result.IsSuccess)
+        if(!result.IsValid)
             return BadRequest("Invalid data");
         
         return Ok(result);
