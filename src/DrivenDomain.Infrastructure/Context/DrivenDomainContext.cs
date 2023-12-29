@@ -1,23 +1,21 @@
-using DrivenDomain.Domain;
+using DrivenDomain.Domain.Entities;
+using DrivenDomain.Infrastructure.Context.DatabaseConfig;
 using Microsoft.EntityFrameworkCore;
 
-namespace DrivenDomain.Infrastructure;
+namespace DrivenDomain.Infrastructure.Context;
 
 public class DrivenDomainContext : DbContext
 {
-    public DbSet<Customer> Customers { get; set; }
-    
-    public DrivenDomainContext(DbContextOptions<DrivenDomainContext> options) : base(options)
+    public DrivenDomainContext(DbContextOptions<DrivenDomainContext> options)
+        : base(options)
     {
-        
     }
-    
+
+    public DbSet<Customer> Customers { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder
-            .Entity<Customer>()
-            .ToTable("customers")
-            .HasKey(x => x.Id);
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfiguration(new CustomerConfiguration());
     }
-   
 }

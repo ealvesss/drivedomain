@@ -1,26 +1,24 @@
-using DriveDomain.Domain.FluentValidators;
-using DriveDomain.Domain.Interfaces;
-using DrivenDomain.Domain.Entities;
+using DrivenDomain.Domain.Validators;
 using FluentValidation.Results;
 
-namespace DrivenDomain.Domain;
+namespace DrivenDomain.Domain.Entities;
 
-public class CustomerDomainService : BaseEntity, ICustomerDomainService
+public class Customer : BaseEntity
 {
-    public String Name { get; }
-    public String Email { get; }
-    public String Phone { get; }
-    public String Type { get; }
-    
-    
-    public async Task<ValidationResult> CreateAsync(CustomerDomainService entity)
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string Phone { get; set; }
+    public string Document { get; set; }
+    public string Address { get; set; }
+    public string Type { get; set; }
+
+
+    public async Task<ValidationResult> CheckDataBeforeCreate(Customer entity)
     {
         var entityResult = await new CustomerValidator().ValidateAsync(entity);
 
         if (!entityResult.IsValid)
             return entityResult;
-        
-        //Insert into database.
 
         return entityResult;
     }

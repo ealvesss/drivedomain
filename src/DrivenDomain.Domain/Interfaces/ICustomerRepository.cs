@@ -1,8 +1,9 @@
-using DrivenDomain.Domain;
+using DrivenDomain.Domain.Entities;
 
-namespace DrivenDomain.Infrastructure.Interfaces;
+namespace DrivenDomain.Domain.Interfaces;
 
 public interface ICustomerRepository
-{ 
-    Task<Customer> Add(Customer entity);
+{
+    Task<Customer> Create(Customer entity);
+    Task<IEnumerable<Customer>> GetAllAsync(int page, int pageSize);
 }

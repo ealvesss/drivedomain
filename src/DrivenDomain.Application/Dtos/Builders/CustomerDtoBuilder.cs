@@ -4,13 +4,14 @@
 //is correctly formatted, complete, and makes sense in a general context.
 //
 
-using DrivenDomain.Crosscutting.Common.BuilderGeneric;
+using DrivenDomain.Application.Dtos.Request;
+using DrivenDomain.Infrastructure.Common.Builder;
 
 namespace DrivenDomain.Application.Dtos.Builders;
 
-public class CustomerDtoBuilder : BuilderBase<CustomerDtoBuilder, CustomerDto>
+public class CustomerDtoBuilder : BuilderBase<CustomerDtoBuilder, CustomerCreateRequestDto>
 {
-    BuildResult<CustomerDto> result = new();
+    private readonly BuildResult<CustomerCreateRequestDto> _result = new();
 
     // public CustomerDtoBuilder WithId(Guid id)
     // {
@@ -18,46 +19,37 @@ public class CustomerDtoBuilder : BuilderBase<CustomerDtoBuilder, CustomerDto>
     //     return this;
     // }
 
-    public CustomerDtoBuilder WithName(String? name)
+    public CustomerDtoBuilder WithName(string? name)
     {
         _instance.Name = name;
         return this;
     }
 
-    public CustomerDtoBuilder WithEmail(String? email)
+    public CustomerDtoBuilder WithEmail(string? email)
     {
         _instance.Email = email;
         return this;
     }
 
-    public CustomerDtoBuilder WithPhone(String? phone)
+    public CustomerDtoBuilder WithPhone(string? phone)
     {
         _instance.Phone = phone;
         return this;
     }
 
-    public new BuildResult<CustomerDto> Build()
+    public new BuildResult<CustomerCreateRequestDto> Build()
     {
         Validate();
-        result.SetObject(_instance);
-        return result;
+        _result.SetObject(_instance);
+        return _result;
     }
 
     protected override void Validate()
     {
-        if (String.IsNullOrEmpty(_instance.Name))
-        {
-            result.AddError("Name is required");
-        }
+        if (string.IsNullOrEmpty(_instance.Name)) _result.AddError("Name is required");
 
-        if (String.IsNullOrEmpty(_instance.Email))
-        {
-            result.AddError("Email is required");
-        }
+        if (string.IsNullOrEmpty(_instance.Email)) _result.AddError("Email is required");
 
-        if (String.IsNullOrEmpty(_instance.Phone))
-        {
-            result.AddError("Phone is required");
-        }
+        if (string.IsNullOrEmpty(_instance.Phone)) _result.AddError("Phone is required");
     }
 }

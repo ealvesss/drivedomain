@@ -4,19 +4,12 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Driven-Domain.Domain</RootNamespace>
+        <RootNamespace>DrivenDomain.Domain</RootNamespace>
+        <LangVersion>11</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Entities\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="FluentValidation" Version="11.8.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\DrivenDomain.Crosscutting\DrivenDomain.Crosscutting.csproj" />
+        <PackageReference Include="FluentValidation" Version="11.8.0"/>
     </ItemGroup>
 
 </Project>

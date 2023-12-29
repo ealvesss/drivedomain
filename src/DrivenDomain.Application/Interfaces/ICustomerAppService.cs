@@ -1,14 +1,11 @@
-using System.ComponentModel.DataAnnotations;
-using DrivenDomain.Application.Dtos;
-using DrivenDomain.Application.Dtos.Builders;
-using DrivenDomain.Crosscutting.Common.BuilderGeneric;
-using FluentValidation;
-using ValidationResult = FluentValidation.Results.ValidationResult;
+using DrivenDomain.Application.Dtos.Request;
+using DrivenDomain.Application.Dtos.Response;
+using FluentValidation.Results;
 
 namespace DrivenDomain.Application.Interfaces;
 
 public interface ICustomerAppService
 {
-    Task<BuildResult<CustomerDto>>  CreateAsync(CustomerDto dto);
-    //Task<ValidationResult> CreateAsync(CustomerDto dto);
+    Task<ValidationResult> CreateAsync(CustomerCreateRequestDto customerCreateRequestDto);
+    Task<CustomerResponseBase<GetAllCustomersResponseDto>> GetAllAsync(CustomerGetRequestDto request);
 }

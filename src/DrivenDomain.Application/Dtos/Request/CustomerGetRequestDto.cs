@@ -1,6 +1,5 @@
 namespace DrivenDomain.Application.Dtos.Request;
 
-public class CustomerGetRequestDto
+public class CustomerGetRequestDto : RequestDtoBase
 {
-    
 }

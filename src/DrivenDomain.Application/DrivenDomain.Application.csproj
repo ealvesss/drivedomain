@@ -4,15 +4,22 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Driven-Domain.Application</RootNamespace>
+        <RootNamespace>DrivenDomain.Application</RootNamespace>
+        <LangVersion>11</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentValidation" Version="11.8.0" />
+        <PackageReference Include="AutoMapper" Version="12.0.1"/>
+        <PackageReference Include="FluentValidation" Version="11.8.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DrivenDomain.Domain\DrivenDomain.Domain.csproj" />
+        <ProjectReference Include="..\DrivenDomain.Domain\DrivenDomain.Domain.csproj"/>
+        <ProjectReference Include="..\DrivenDomain.Infrastructure\DrivenDomain.Infrastructure.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Interfaces\Domain\"/>
     </ItemGroup>
 
 </Project>

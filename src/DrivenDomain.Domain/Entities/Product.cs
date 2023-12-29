@@ -1,6 +1,5 @@
-namespace Driven-Domain.Domain.Entities;
+namespace DrivenDomain.Domain.Entities;
 
 public class Product
 {
-    
 }

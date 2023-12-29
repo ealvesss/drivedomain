@@ -4,7 +4,26 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Driven-Domain.Crosscutting</RootNamespace>
+        <RootNamespace>DrivenDomain.Crosscutting</RootNamespace>
+        <LangVersion>11</LangVersion>
     </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="Interfaces\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="Interfaces\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Interfaces\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\DrivenDomain.Application\DrivenDomain.Application.csproj"/>
+        <ProjectReference Include="..\DrivenDomain.Domain\DrivenDomain.Domain.csproj"/>
+        <ProjectReference Include="..\DrivenDomain.Infrastructure\DrivenDomain.Infrastructure.csproj"/>
+    </ItemGroup>
 
 </Project>
