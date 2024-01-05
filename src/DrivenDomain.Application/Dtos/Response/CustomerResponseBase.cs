@@ -1,6 +1,6 @@
 namespace DrivenDomain.Application.Dtos.Response;
 
-public abstract class ResponseBase<TEntity> where TEntity : class
+public class CustomerResponseBase<TEntity> where TEntity : class
 {
     public int Page { get; set; }
     public int PageSize { get; set; }

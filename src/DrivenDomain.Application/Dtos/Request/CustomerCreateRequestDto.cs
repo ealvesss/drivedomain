@@ -1,11 +1,11 @@
 namespace DrivenDomain.Application.Dtos.Request;
 
-public class CreateRequestDto
+public class CustomerCreateRequestDto
 {
-    public String Name { get; set; }
-    public String Email { get; set; }
-    public String Phone { get; set; }
-    public String Document { get; set; }
-    public String Address { get; set; }
-    public String Type { get; set; }
+    public string Name { get; set; } = null!;
+    public string Email { get; set; }
+    public string Phone { get; set; }
+    public string Document { get; set; }
+    public string Address { get; set; }
+    public string Type { get; set; }
 }

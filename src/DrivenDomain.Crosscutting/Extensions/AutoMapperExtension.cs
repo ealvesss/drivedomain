@@ -1,4 +1,3 @@
-using AutoMapper;
 using DrivenDomain.Application.AutoMapper.Profiles;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +9,5 @@ public static class AutoMapperExtension
     {
         //add all profiles
         config.AddAutoMapper(typeof(CustomerProfile));
-        
     }
 }

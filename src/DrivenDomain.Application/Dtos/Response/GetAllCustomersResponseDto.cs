@@ -1,6 +1,6 @@
 namespace DrivenDomain.Application.Dtos.Response;
 
-public class GetAllCustomerResponseDto
+public class GetAllCustomersResponseDto
 {
     public string Id { get; set; }
     public string Name { get; set; }

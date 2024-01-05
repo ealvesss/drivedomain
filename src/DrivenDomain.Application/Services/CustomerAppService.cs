@@ -1,37 +1,83 @@
-using DriveDomain.Domain.Interfaces;
-using DrivenDomain.Application.Dtos;
-using DrivenDomain.Application.Dtos.Builders;
+using AutoMapper;
 using DrivenDomain.Application.Dtos.FluentValidators;
+using DrivenDomain.Application.Dtos.Request;
+using DrivenDomain.Application.Dtos.Response;
 using DrivenDomain.Application.Interfaces;
-using DrivenDomain.Crosscutting.Common.BuilderGeneric;
+using DrivenDomain.Domain.Entities;
+using DrivenDomain.Domain.Interfaces;
+using DrivenDomain.Infrastructure.Context;
 using FluentValidation.Results;
 
-namespace DriveDomain.Application;
+namespace DrivenDomain.Application.Services;
 
 public class CustomerAppService : ICustomerAppService
 {
-    private readonly Domain.Interfaces.ICustomerDomainService _customerDomainService;
-    public CustomerAppService(Domain.Interfaces.ICustomerDomainService customerDomainService)
+    private readonly DrivenDomainContext _context;
+    private readonly ICustomerDomainService _customerDomainService;
+    private readonly IMapper _mapper;
+
+    public CustomerAppService(ICustomerDomainService customerDomainService, IMapper mapper, DrivenDomainContext context)
     {
+        _context = context;
         _customerDomainService = customerDomainService;
+        _mapper = mapper;
     }
 
-    //public async Task<ValidationResult> CreateAsync(CustomerDto dto)
-    public async Task<BuildResult<CustomerDto>> CreateAsync(CustomerDto dto)
+    public async Task<ValidationResult> CreateAsync(CustomerCreateRequestDto dto)
     {
-        var customer = CustomerDtoBuilder.Create()
-            .WithName(dto.Name)
-            .WithEmail(dto.Email)
-            .WithPhone(dto.Phone)
-            .Build();
+        var result = await new CustomerRequestDtoValidator().ValidateAsync(dto);
 
-        //var result = await new CustomerDtoValidator().ValidateAsync(dto);
+        if (!result.IsValid)
+            return result;
+
+        var entity = _mapper.Map<Customer>(dto);
+
+        try
+        {
+            await _context.Database.BeginTransactionAsync();
+            var resultDomain = await _customerDomainService.Create(entity);
+
+            if (!resultDomain.IsValid)
+            {
+                await _context.Database.RollbackTransactionAsync();
+                return resultDomain;
+            }
+
+            await _context.SaveChangesAsync();
+            await _context.Database.CommitTransactionAsync();
+            return resultDomain;
+        }
+        catch (Exception ex)
+        {
+            await _context.Database.RollbackTransactionAsync();
+            throw;
+        }
+    }
+
+    public async Task<CustomerResponseBase<GetAllCustomersResponseDto>> GetAllAsync(CustomerGetRequestDto request)
+    {
+        var entity = await _customerDomainService.GetAllAsync(request.Page, request.PageSize);
+
+        if (!entity.Any())
+            return new  CustomerResponseBase<GetAllCustomersResponseDto>();
         
-        //if(!result.IsValid)
-        //    return await Task.FromResult(result);
+        var result = _mapper.Map<IEnumerable<GetAllCustomersResponseDto>>(entity).ToList();
+
+        if (!result.Any())
+            return new CustomerResponseBase<GetAllCustomersResponseDto>()
+            {
+                Data = null,
+                Page = request.Page,
+                PageSize = request.PageSize,
+                Total = 0
+            };
         
-        //var resultDomain = await _customerDomain.CreateAsync(result);
-        
-        return await Task.FromResult(customer);
+        return new CustomerResponseBase<GetAllCustomersResponseDto>
+        {
+            Data = result,
+            Page = request.Page,
+            PageSize = request.PageSize,
+            Total = result.Count()
+        };
     }
 }

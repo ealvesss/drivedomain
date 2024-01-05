@@ -1,6 +1,22 @@
-namespace Driven-Domain.Infrastructure.Repositories;
+using DrivenDomain.Domain.Entities;
+using DrivenDomain.Domain.Interfaces;
+using DrivenDomain.Infrastructure.Context;
 
-public class CustomerRepository
+namespace DrivenDomain.Infrastructure.Repositories;
+
+public class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository
 {
-    
+    public CustomerRepository(DrivenDomainContext context) : base(context)
+    {
+    }
+
+    public async Task<Customer> Create(Customer entity)
+    {
+        return await base.Add(entity);
+    }
+
+    public async Task<IEnumerable<Customer>> GetAllAsync(int page, int pageSize)
+    {
+        return await base.FindAllAsync(page, pageSize);
+    }
 }
