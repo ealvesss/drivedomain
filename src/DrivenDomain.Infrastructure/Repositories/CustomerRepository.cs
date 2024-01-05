@@ -1,4 +1,3 @@
-using System.Formats.Tar;
 using DrivenDomain.Domain.Entities;
 using DrivenDomain.Domain.Interfaces;
 using DrivenDomain.Infrastructure.Context;

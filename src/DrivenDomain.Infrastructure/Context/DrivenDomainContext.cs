@@ -11,7 +11,7 @@ public class DrivenDomainContext : DbContext
     {
     }
 
-    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Customer>? Customers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
