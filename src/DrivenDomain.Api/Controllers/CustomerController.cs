@@ -27,7 +27,7 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get([FromQuery]CustomerGetRequestDto request)
+    public async Task<IActionResult> Get([FromQuery]CustomerGetAllRequestDto request)
     {
         var result = await _customerApp.GetAllAsync(request);
         return Ok(result);

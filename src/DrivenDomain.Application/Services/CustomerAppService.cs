@@ -50,11 +50,14 @@ public class CustomerAppService : ICustomerAppService
         catch (Exception ex)
         {
             await _context.Database.RollbackTransactionAsync();
-            throw;
+            var errorResult = new ValidationResult();
+            //errorResult.Errors = new List<ValidationFailure>();
+            errorResult.Errors.Add(new ValidationFailure("Error", ex.Message));
+            return await Task.FromResult(errorResult);
         }
     }
 
-    public async Task<CustomerResponseBase<GetAllCustomersResponseDto>> GetAllAsync(CustomerGetRequestDto request)
+    public async Task<CustomerResponseBase<GetAllCustomersResponseDto>> GetAllAsync(CustomerGetAllRequestDto request)
     {
         var entity = await _customerDomainService.GetAllAsync(request.Page, request.PageSize);
 
@@ -66,7 +69,7 @@ public class CustomerAppService : ICustomerAppService
         if (!result.Any())
             return new CustomerResponseBase<GetAllCustomersResponseDto>()
             {
-                Data = null,
+                Data = new CustomerResponseBase<GetAllCustomersResponseDto>().Data,
                 Page = request.Page,
                 PageSize = request.PageSize,
                 Total = 0

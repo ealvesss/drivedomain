@@ -22,7 +22,7 @@ public abstract class RepositoryBase<TEntity> where TEntity : class
     {
         var result = await _context
             .Set<TEntity>()
-            .Skip(page - 1 * (pageSize))
+            .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
             
