@@ -1,9 +1,15 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using DrivenDomain.Application.Dtos.Request;
 using DrivenDomain.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DrivenDomain.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class CustomerController : ControllerBase
@@ -27,7 +33,7 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get([FromQuery]CustomerGetAllRequestDto request)
+    public async Task<IActionResult> Get([FromQuery] CustomerGetAllRequestDto request)
     {
         var result = await _customerApp.GetAllAsync(request);
         return Ok(result);
