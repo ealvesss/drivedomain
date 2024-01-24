@@ -99,15 +99,15 @@ app.UseSwaggerUI(c =>
 
 app.UseHttpsRedirection();
 
-// app.Use(async (context, next) =>
-// {
-//     var myMiddleware = new AuthMiddleware(next, builder.Configuration);
-//     await myMiddleware.InvokeAsync(context);
-// });
+app.Use(async (context, next) =>
+{
+    var authMiddleware = new AuthMiddleware(next, builder.Configuration);
+    await authMiddleware.InvokeAsync(context);
+});
 app.UseMiddleware<ErrorHandlingMiddleware>();
 
-//app.UseAuthentication(); // Use authentication middleware.
-// app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 
