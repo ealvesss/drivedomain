@@ -9,6 +9,7 @@ using System.Text;
 using System.Data;
 using DrivenDomain.Api;
 using DrivenDomain.Api.Config;
+using DrivenDomain.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,6 +71,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 
 //auto mapper
 builder.Services.AddProfile();
@@ -96,8 +99,15 @@ app.UseSwaggerUI(c =>
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication(); // Use authentication middleware.
-app.UseAuthorization();
+// app.Use(async (context, next) =>
+// {
+//     var myMiddleware = new AuthMiddleware(next, builder.Configuration);
+//     await myMiddleware.InvokeAsync(context);
+// });
+app.UseMiddleware<ErrorHandlingMiddleware>();
+
+//app.UseAuthentication(); // Use authentication middleware.
+// app.UseAuthorization();
 
 app.MapControllers();
 
