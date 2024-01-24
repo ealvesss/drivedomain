@@ -1,4 +1,4 @@
-namespace DrivenDomain.Application.Dtos.Request;
+namespace DrivenDomain.Application.Dtos.Request.Customer;
 
 public class CustomerCreateRequestDto
 {

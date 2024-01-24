@@ -1,11 +1,11 @@
-using DrivenDomain.Application.Dtos.Request;
+using DrivenDomain.Application.Dtos.Request.Customer;
 using FluentValidation;
 
-namespace DrivenDomain.Application.Dtos.FluentValidators;
+namespace DrivenDomain.Application.Dtos.Validators.Customer;
 
-public class CustomerRequestDtoValidator : AbstractValidator<CustomerCreateRequestDto>
+public class CustomerCreateRequestDtoValidator : AbstractValidator<CustomerCreateRequestDto>
 {
-    public CustomerRequestDtoValidator()
+    public CustomerCreateRequestDtoValidator()
     {
         RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required");
         RuleFor(x => x.Email).NotEmpty().WithMessage("Email is required");

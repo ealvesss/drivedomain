@@ -5,6 +5,6 @@ namespace DrivenDomain.Domain.Interfaces;
 
 public interface ICustomerDomainService
 {
-    Task<ValidationResult> Create(Customer customer);
+    Task<Customer> Create(Customer customer);
     Task<IEnumerable<Customer>> GetAllAsync(int page, int pageSize);
 }

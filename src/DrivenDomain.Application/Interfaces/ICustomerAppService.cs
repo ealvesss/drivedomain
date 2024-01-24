@@ -1,11 +1,13 @@
-using DrivenDomain.Application.Dtos.Request;
+using DrivenDomain.Application.Dtos.Request.Customer;
 using DrivenDomain.Application.Dtos.Response;
-using FluentValidation.Results;
+using DrivenDomain.Application.Dtos.Response.Customer;
+
 
 namespace DrivenDomain.Application.Interfaces;
 
 public interface ICustomerAppService
 {
-    Task<ValidationResult> CreateAsync(CustomerCreateRequestDto customerCreateRequestDto);
-    Task<CustomerResponseBase<GetAllCustomersResponseDto>> GetAllAsync(CustomerGetAllRequestDto request);
+    Task<ResponseDto<CustomerCreateResponseDto>> CreateAsync(CustomerCreateRequestDto dto);
+    Task<ResponseDto<CustomerGetAllResponseDto>> GetAllAsync(CustomerGetAllRequestDto request);
+    Task<ResponseDto<CustomerUpdateResponseDto>> UpdateAsync(CustomerUpdateRequestDto dto);
 }
