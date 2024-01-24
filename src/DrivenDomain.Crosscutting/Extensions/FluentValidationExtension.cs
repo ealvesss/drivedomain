@@ -1,4 +1,4 @@
-using DrivenDomain.Application.Dtos.FluentValidators;
+using DrivenDomain.Application.Dtos.Validators.Customer;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,6 +8,8 @@ public static class FluentValidationExtension
 {
     public static void AddValidators(this IServiceCollection services)
     {
-        services.AddValidatorsFromAssembly(typeof(CustomerRequestDtoValidator).Assembly);
+        services.AddValidatorsFromAssembly(typeof(CustomerCreateRequestDtoValidator).Assembly);
+        services.AddValidatorsFromAssembly(typeof(CustomerGetAllRequestDtoValidator).Assembly);
+        services.AddValidatorsFromAssembly(typeof(CustomerUpdateRequestDtoValidator).Assembly);
     }
 }

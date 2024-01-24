@@ -13,17 +13,9 @@ public class CustomerDomainService : ICustomerDomainService
         _customerRepository = customerRepository;
     }
 
-    public async Task<ValidationResult> Create(Customer entity)
+    public async Task<Customer> Create(Customer entity)
     {
-        //validate data
-        var entityResult = await entity.CheckDataBeforeCreate(entity);
-
-        if (!entityResult.IsValid)
-            return entityResult;
-
-        var result = await _customerRepository.Create(entity);
-
-        return entityResult;
+        return await _customerRepository.CreateAsync(entity);
     }
 
     public async Task<IEnumerable<Customer>> GetAllAsync(int page, int pageSize)

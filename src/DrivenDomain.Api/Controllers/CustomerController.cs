@@ -1,7 +1,4 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using DrivenDomain.Application.Dtos.Request;
+using DrivenDomain.Application.Dtos.Request.Customer;
 using DrivenDomain.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +22,7 @@ public class CustomerController : ControllerBase
     {
         var result = await _customerApp.CreateAsync(customerCreateRequestDto);
 
-        if (!result.IsValid)
+        if (!result.IsSuccess)
             return BadRequest("Invalid data");
 
         return Ok(result);
@@ -35,6 +32,17 @@ public class CustomerController : ControllerBase
     public async Task<IActionResult> Get([FromQuery] CustomerGetAllRequestDto request)
     {
         var result = await _customerApp.GetAllAsync(request);
+        return Ok(result);
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Put([FromBody] CustomerUpdateRequestDto customerUpdateRequestDto)
+    {
+        var result = await _customerApp.UpdateAsync(customerUpdateRequestDto);
+
+        if (!result.IsSuccess)
+            return BadRequest("Invalid data");
+
         return Ok(result);
     }
 }
