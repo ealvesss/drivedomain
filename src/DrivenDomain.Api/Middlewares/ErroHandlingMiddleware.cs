@@ -1,5 +1,6 @@
 using System.Text.Json;
 using DrivenDomain.Application.Dtos.Errors;
+using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
 namespace DrivenDomain.Api.Middlewares
